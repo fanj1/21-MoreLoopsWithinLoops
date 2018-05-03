@@ -150,9 +150,6 @@ def largest_negative_number(seq_seq):
     """
 
     count = 0
-
-
-
     for k in range(len(seq_seq)):
             if len(seq_seq[k]) > 0:
                 for j in range(len(seq_seq[k])):
@@ -161,12 +158,12 @@ def largest_negative_number(seq_seq):
                         count = count + 1
 
     if count > 0:
-            for k in range(len(seq_seq)):
-                for j in range(len(seq_seq[k])):
-                    if seq_seq[k][j] < 0:
-                        if seq_seq[k][j] > ans:
-                            ans = seq_seq[k][j]
-            return ans
+        for k in range(len(seq_seq)):
+            for j in range(len(seq_seq[k])):
+                if seq_seq[k][j] < 0:
+                    if seq_seq[k][j] > ans:
+                        ans = seq_seq[k][j]
+        return ans
     else:
         return None
 
@@ -410,8 +407,20 @@ def first_is_elsewhere_too(seq_seq):
       :type seq_seq: (list, tuple)
     and the given argument is a sequence of sequences.
     """
+    count = 0
+    for k in range(len(seq_seq[0])):
+        a = seq_seq[0][k]
+        for j in range(len(seq_seq) - 1):
+            for i in range(len(seq_seq[j + 1])):
+                if seq_seq[j + 1][i] == a:
+                    count = count + 1
+    if count == 0:
+        return False
+    else:
+        return True
+
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # DONE: 6. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
